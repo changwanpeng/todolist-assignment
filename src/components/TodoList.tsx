@@ -3,6 +3,7 @@ import { Todo } from "@/types/todo";
 import TodoItem from "./TodoItem";
 
 interface TodoListProps {
+    key: number;
     todos: Todo[];
     deleteTodo: (id: number) => void;
     toggleComplete: (id: number) => void;
@@ -17,6 +18,7 @@ function TodoList({ todos, deleteTodo, toggleComplete, toggleUrgent }: TodoListP
         <ul>
             {todos.map((todo) => (
                 <TodoItem
+                    key={todo.id}
                     todo={todo}
                     deleteTodo={deleteTodo}
                     toggleComplete={toggleComplete}
