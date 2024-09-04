@@ -13,6 +13,7 @@ function AddTodoForm({ addTodo }: AddTodoFormProps) {
     const [desc, setDesc] = useState<string>('');
 
     const handleSubmit = (event: React.FormEvent) => {
+        // Prevent the default form submission behavior such as page refresh
         event.preventDefault();
         addTodo(title, desc);
         setTitle('');
@@ -25,7 +26,7 @@ function AddTodoForm({ addTodo }: AddTodoFormProps) {
                 <label>Title:</label>
                 <input
                     type="text"
-                    value={title}
+                    value={title}  /* the value of 'title' need to be updated */
                     placeholder="Provide a title for the new To Do"
                     onChange={(e) => setTitle(e.target.value)}
                     required

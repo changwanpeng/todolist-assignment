@@ -3,7 +3,7 @@ import { Todo } from "@/types/todo";
 import TodoItem from "./TodoItem";
 
 interface TodoListProps {
-    key: number;
+    key: number; // This is a unique identifier for the TodoList
     todos: Todo[];
     deleteTodo: (id: number) => void;
     toggleComplete: (id: number) => void;
@@ -18,7 +18,7 @@ function TodoList({ todos, deleteTodo, toggleComplete, toggleUrgent }: TodoListP
         <ul>
             {todos.map((todo) => (
                 <TodoItem
-                    key={todo.id}
+                    key={todo.id}  /* the key prop is required for React to keep track of the list items */
                     todo={todo}
                     deleteTodo={deleteTodo}
                     toggleComplete={toggleComplete}

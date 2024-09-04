@@ -31,11 +31,12 @@ export default function Home() {
       isCompleted: false,
       isUrgent: false,
     };
-
-    setTodos([...todos, newTodo]);
+    // remove 'push' and use spread operator to update state in order to avoid direct mutation causing unexpected behavior
+    setTodos([...todos, newTodo]); 
   };
 
   const deleteTodo = (id: number) => {
+    // remove todo with matching id from the list by filtering out the todo with the matching id
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
@@ -47,7 +48,7 @@ export default function Home() {
       return todo;
     });
     setTodos(updatedTodos);
-  }, [todos]);
+  }, [todos]);  // the dependency is 'todos' state rather than 'setTodos' function
 
   const displayTodoList = (todoList:Todo[]) => {
     return (
@@ -62,6 +63,7 @@ export default function Home() {
 
   const displayTodos = (displayUrgent: boolean) => {
     return displayTodoList(todos.filter((x) => {
+      // filter out the todos that are not completed and match the displayUrgent value
       return !x.isCompleted && x.isUrgent === displayUrgent;
     }));
   };
